@@ -3,8 +3,8 @@ let productos = []
 fetch("./productos.json")
     .then(response => response.json())
     .then(data => {
-        productos = data;
-        cargarProductos(productos);
+        productos = data
+        cargarProductos(productos)
     })
 
 const contenedorProductos = document.querySelector("#contenedor-productos")
@@ -44,7 +44,7 @@ const agregarAlCarrito = (e) => {
             y: '1.5rem'
           },
         onClick: function(){}
-    }).showToast();
+    }).showToast()
 
     const idBoton = e.currentTarget.id
     const productoAgregado = productos.find(producto => producto.id === idBoton)

@@ -38,7 +38,7 @@ const eliminarDelCarrito = (e) => {
             y: '1.5rem'
           },
         onClick: function(){}
-    }).showToast();
+    }).showToast()
 
     const idBoton = e.target.id
     const index = carrito.findIndex(producto => producto.id === idBoton)
@@ -71,11 +71,11 @@ const cargarProductosCarrito = () => {
         })
 
         carrito.forEach(producto => {
-            const div = document.createElement("div");
-            div.className = "cart-product";
+            const div = document.createElement("div")
+            div.className = "cart-product"
 
-            const cantidadId = `cantidad-carrito-${producto.id}`;
-            const subtotalId = `subtotal-${producto.id}`;
+            const cantidadId = `cantidad-carrito-${producto.id}`
+            const subtotalId = `subtotal-${producto.id}`
         
             div.innerHTML = `
                 <div class="cart-product-type">
@@ -114,37 +114,37 @@ const cargarProductosCarrito = () => {
                     </div>
                     <button class="delete-product"><i id="${producto.id}"class="bi bi-trash-fill"></i></button>
                 </div>
-            `;
+            `
         
-            productosCarrito.append(div);
+            productosCarrito.append(div)
 
-            const cantidad = document.getElementById(cantidadId);
-            const subtotal = document.getElementById(subtotalId);
-            const botonesAgregar = div.querySelector(".add-btn");
-            const botonesQuitar = div.querySelector(".delete-btn");
+            const cantidad = document.getElementById(cantidadId)
+            const subtotal = document.getElementById(subtotalId)
+            const botonesAgregar = div.querySelector(".add-btn")
+            const botonesQuitar = div.querySelector(".delete-btn")
 
             const modificarCantidad = () => {
-                cantidad.innerText = producto.cantidad;
-                subtotal.innerText = `$ ${producto.precio * producto.cantidad}`;
-                precioTotal();
+                cantidad.innerText = producto.cantidad
+                subtotal.innerText = `$ ${producto.precio * producto.cantidad}`
+                precioTotal()
                 localStorage.setItem("prods-carrito", JSON.stringify(carrito))
             }
 
             botonesAgregar.addEventListener("click", () => {
-                producto.cantidad++;
+                producto.cantidad++
                 modificarCantidad()
-              });
+              })
         
               botonesQuitar.addEventListener("click", () => {
                 if (producto.cantidad > 1) {
-                  producto.cantidad--;
+                  producto.cantidad--
                   modificarCantidad()
                 }
-              });
-    });
+              })
+    })
 
-    cargarBotonesEliminar();
-    precioTotal();
+    cargarBotonesEliminar()
+    precioTotal()
         
     }else{
         carritoVacio.classList.remove("hide")
